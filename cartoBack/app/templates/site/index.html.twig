@@ -8,7 +8,8 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
  <h1>{{ controller_name }} : </h1>
-<div class="example-wrapper">
+<div class="col-1"></div>
+  <div class="col-10">
     <table class="table">
         <thead>
           <tr>
@@ -25,6 +26,7 @@
             <th scope="col">date</th>
             <th scope="col">sujet</th>
             <th scope="col">poste</th>
+            <th scope="col">action</th>
           </tr>
         </thead>
         <tbody>
@@ -33,19 +35,28 @@
                     <th scope="row">{{site.libelle}}</th>
                     <td>{{site.longitude}}</td>
                     <td>{{site.latitude}}</td>
-                    <td>@{{site.ville}}</td>
+                    <td>{{site.ville}}</td>
                     <td>{{site.numero}}</td>
                     <td>{{site.rue}}</td>
-                    <td>@{{site.cp}}</td>
+                    <td>{{site.cp}}</td>
                     <td>{{site.codeApe}}</td>
                     <td>{{site.ca}}</td>
-                    <td>@{{site.filiere}}</td>
-                    <td>{{site.date}}</td>
+                    <td>{{site.filiere}}</td>
+                    <td>{{site.date|date("m/d/Y")}}</td>
                     <td>{{site.sujet}}</td>
-                    <td>@{{site.poste}}</td>
+                    <td>{{site.poste}}</td>
+                    <td>
+                        <form action={{ path('delete_site', {'id': site.id}) }} method="POST">
+                          <button type="submit">Supprimer</button><br>
+                        </form>   
+                        <form action={{ path('update_site', {'id': site.id}) }} method="POST">
+                          <button type="submit">Update</button><br>
+                        </form>  
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
       </table>
 </div>
+<div class="col-1"></div>
 {% endblock %}
