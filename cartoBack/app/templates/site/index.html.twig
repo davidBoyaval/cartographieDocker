@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SiteController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+ <h1>{{ controller_name }} : </h1>
+<div class="example-wrapper">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">longitude</th>
+            <th scope="col">latitude</th>
+            <th scope="col">ville</th>
+            <th scope="col">N°</th>
+            <th scope="col">rue</th>
+            <th scope="col">cp</th>
+            <th scope="col">code_ape</th>
+            <th scope="col">ca</th>
+            <th scope="col">filiere</th>
+            <th scope="col">date</th>
+            <th scope="col">sujet</th>
+            <th scope="col">poste</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for site in sites %}
+                <tr>
+                    <th scope="row">{{site.libelle}}</th>
+                    <td>{{site.longitude}}</td>
+                    <td>{{site.latitude}}</td>
+                    <td>@{{site.ville}}</td>
+                    <td>{{site.numero}}</td>
+                    <td>{{site.rue}}</td>
+                    <td>@{{site.cp}}</td>
+                    <td>{{site.codeApe}}</td>
+                    <td>{{site.ca}}</td>
+                    <td>@{{site.filiere}}</td>
+                    <td>{{site.date}}</td>
+                    <td>{{site.sujet}}</td>
+                    <td>@{{site.poste}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      {{json}}
+</div>
+{% endblock %}
