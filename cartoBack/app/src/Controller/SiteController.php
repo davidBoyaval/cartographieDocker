@@ -27,12 +27,9 @@ class SiteController extends AbstractController
      */
     public function index(SiteRepository $siteRepository)
     {
-        $json = $siteRepository->findAll();
-        dump($json[0]->getlibelle());
         return $this->render('site/index.html.twig', [
             'controller_name' => 'Liste des sites',
-            'sites' => $siteRepository->findAll(),
-            'json' => "ok"
+            'sites' => $siteRepository->findAll()
         ]);
     }
     /**
